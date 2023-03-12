@@ -15,12 +15,6 @@ var listCmd = &cobra.Command{
 
 func init() {
 	rootCmd.AddCommand(listCmd)
-
-	listCmd.Flags().StringSliceP("region-list", "r", []string{}, "comma-separated list of AWS regions to search for VPC resources")
-	viper.BindPFlag("region-list", listCmd.Flags().Lookup("region-list"))
-
-	listCmd.Flags().StringSliceP("profile-list", "p", []string{}, "comma-separated list of AWS profiles to use for authentication")
-	viper.BindPFlag("profile-list", listCmd.Flags().Lookup("profile-list"))
 }
 
 func listFunc(cmd *cobra.Command, args []string) error {

@@ -77,12 +77,12 @@ func initConfig() {
 	viper.AutomaticEnv()
 
 	// Set the default configuration file name.
-	viper.SetConfigName("config")
+	//viper.SetConfigName("config")
 
-	err := viper.ReadInConfig()
-	if err != nil {
-		fmt.Println("Error reading config file, %s", err)
-	}
+	//err := viper.ReadInConfig()
+	//if err != nil {
+	//	fmt.Println("Error reading config file, %s", err)
+	//}
 }
 
 func Execute() {

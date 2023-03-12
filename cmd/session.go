@@ -8,7 +8,9 @@ import (
 
 // GetSession creates a new AWS session using the provided profile and region.
 func GetSession(profile, region string) (*session.Session, error) {
-	fmt.Println("GetSession called")
+	if debugFlag {
+		fmt.Println("GetSession called")
+	}
 	// Create a new AWS session using the provided profile and region.
 	sess, err := session.NewSessionWithOptions(session.Options{
 		Config: aws.Config{
