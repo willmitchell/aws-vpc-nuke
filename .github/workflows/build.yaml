@@ -1,0 +1,40 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+env:
+  GO111MODULE: on
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+        go: [1.19.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: ${{ matrix.go }}
+      id: go
+
+    - name: Get dependencies
+      run: go mod download
+
+    - name: Build
+      run: go build -o aws-vpc-nuke-$GOOS-$GOARCH
+
+    - name: Archive artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: aws-vpc-nuke-$GOOS-$GOARCH
+        path: aws-vpc-nuke-$GOOS-$GOARCH
