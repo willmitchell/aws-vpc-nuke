@@ -16,15 +16,14 @@ USE AT YOUR OWN RISK.  NO WARRANTIES ARE EXPRESSED OR IMPLIED.
 
 ## Supported Resources
 
-The following resources are supported:
-
-- VPCs
-- Subnets
-- Internet Gateways
-- NAT Gateways
-- Route Tables
-- NACLs
-- Security Groups
+- [VPCs](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html)
+- [Subnets](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
+- [Internet Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html)
+- [NAT Gateways](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html)
+- [Route Tables](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html)
+- [Network Access Control Lists](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html)
+- [Security Groups](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html)
+- [VPC Endpoints](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html)
 
 ## Usage
 
@@ -55,7 +54,7 @@ Use "aws-vpc-nuke [command] --help" for more information about a command.
 
 ## Why I created this tool
 
-aws-nuke is a great tool, but I found that its super-safe operational model was not suitable for my use case.  I wanted to be able to delete all VPC resources in all regions across a set of profiles (accounts), but I didn't want to have to specify each resource type individually.  I also wanted to be able to delete all resources in a single command.
+[aws-nuke](https://github.com/rebuy-de/aws-nuke) is a great tool, but I found that its super-safe operational model was not suitable for my use case.  I wanted to be able to delete all VPC resources in all regions across a set of profiles (accounts), but I didn't want to have to specify each resource type individually.  I also wanted to be able to delete all resources in a single command.
 
 My use case actually stems from experimental use of [AWS Control Tower](https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html).  This is an interesting management tool for enterprise AWS account management, but it can create a lot of resources across multiple regions.  In my case, I set up Control Tower and the associated [Account Factory for Terraform](https://docs.aws.amazon.com/controltower/latest/userguide/taf-account-provisioning.html), and I deployed it across 3 regions.  I created a couple test accounts across those same regions. My daily costs went up to over $30/day.  Hello VPC Endpoints and multiple NAT Gateways!  
 
